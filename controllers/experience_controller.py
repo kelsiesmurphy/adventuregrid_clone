@@ -33,7 +33,8 @@ def experience_create():
     price = request.form['price']
     is_featured = 'is_featured' in request.form
 
-    new_experience = Experience(title, description, location, image, price, is_featured)
+    id = all_experiences[-1].id + 1
+    new_experience = Experience(title, description, location, image, price, is_featured, id)
     experience_repository.save(new_experience)
     return redirect('/experiences')
 

@@ -31,7 +31,8 @@ def user_create():
     username = request.form['username']
     image = request.form['image']
 
-    new_user = User(name, email, username, image)
+    id = all_users[-1].id + 1
+    new_user = User(name, email, username, image, id)
     user_repository.save(new_user)
     return redirect('/users')
 
