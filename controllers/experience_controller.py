@@ -2,6 +2,8 @@ from flask import Flask, Blueprint, redirect, render_template, request
 from models.experience import Experience
 import repositories.experience_repository as experience_repository
 
+from models.all_items import all_experiences
+
 experiences_blueprint = Blueprint("experiences", __name__)
 
 
@@ -9,8 +11,8 @@ experiences_blueprint = Blueprint("experiences", __name__)
 # GET '/experiences'
 @experiences_blueprint.route('/experiences')
 def experiences_home():
-    experiences = experience_repository.select_all()
-    return render_template('experiences/index.html', experiences=experiences)
+    # experiences = experience_repository.select_all()
+    return render_template('experiences/index.html', experiences=all_experiences)
 
 
 # NEW EXPERIENCE

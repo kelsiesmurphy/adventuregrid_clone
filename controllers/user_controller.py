@@ -4,13 +4,15 @@ import repositories.user_repository as user_repository
 
 users_blueprint = Blueprint("users", __name__)
 
+from models.all_items import all_users
+
 
 # INDEX
 # GET '/users'
 @users_blueprint.route('/users')
 def users_home():
-    users = user_repository.select_all()
-    return render_template('users/index.html', users=users)
+    # users = user_repository.select_all()
+    return render_template('users/index.html', users=all_users)
 
 
 # NEW USER
