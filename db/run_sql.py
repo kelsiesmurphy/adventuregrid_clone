@@ -2,12 +2,7 @@ import psycopg2
 import psycopg2.extras as ext
 import os
 
-# user=adventuregr_6367
-# password= eKTeqoQsHUOwZ29dW0la
-# host= adventuregr-6367.postgresql.a.osc-fr1.scalingo-dbs.com
-# port= 39168
-# dbname= adventuregr_6367
-# sslmode= prefer
+
 
 def run_sql(sql, values = None):
     conn = None
