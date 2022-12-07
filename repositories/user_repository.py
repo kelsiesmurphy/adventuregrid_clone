@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 from models.user import User
 from models.experience import Experience
 
+from models.all_items import all_experiences, all_reviews, all_users
+
 
 # SAVE PSEUDOCODE
 # Get a user
@@ -14,24 +16,27 @@ from models.experience import Experience
 
 # SAVE (Create in CRUD)
 def save(user):
-    sql = "INSERT INTO users (name, email, username, image) VALUES (%s, %s, %s, %s) RETURNING *"
-    values = [user.name, user.email, user.username, user.image]
-    result = run_sql(sql, values)[0]
-    result_id = result['id']
-    user.id = result_id
+    # sql = "INSERT INTO users (name, email, username, image) VALUES (%s, %s, %s, %s) RETURNING *"
+    # values = [user.name, user.email, user.username, user.image]
+    # result = run_sql(sql, values)[0]
+    # result_id = result['id']
+    # user.id = result_id
+    all_users.append(user)
     return user
 
 
 # SELECT BY ID (Read in CRUD)
 def select_by_id(id):
-    selected_user = None
-    sql = "SELECT * FROM users WHERE id=%s"
-    values = [id]
-    result = run_sql(sql, values)[0]
+    # selected_user = None
+    # sql = "SELECT * FROM users WHERE id=%s"
+    # values = [id]
+    # result = run_sql(sql, values)[0]
 
-    if result is not None:
-        selected_user = User(result["name"], result["email"], result["username"], result["image"], result["id"])
-    return selected_user
+    # if result is not None:
+    #     selected_user = User(result["name"], result["email"], result["username"], result["image"], result["id"])
+    for user in all_users:
+        if user.id == id:
+            return user
 
 
 # SELECT ALL
@@ -54,9 +59,12 @@ def update(user):
 
 # DELETE BY ID (Delete in CRUD)
 def delete_by_id(id):
-    sql = "DELETE FROM users WHERE id = %s"
-    values = [id]
-    run_sql(sql, values)
+    # sql = "DELETE FROM users WHERE id = %s"
+    # values = [id]
+    # run_sql(sql, values)
+    user = select_by_id(id)
+    all_users.remove(user)
+    
 
 
 # DELETE ALL
