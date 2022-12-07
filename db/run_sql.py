@@ -1,12 +1,33 @@
 import psycopg2
 import psycopg2.extras as ext
+import os
+
+# user=adventuregr_6367
+# password= eKTeqoQsHUOwZ29dW0la
+# host= adventuregr-6367.postgresql.a.osc-fr1.scalingo-dbs.com
+# port= 39168
+# dbname= adventuregr_6367
+# sslmode= prefer
 
 def run_sql(sql, values = None):
     conn = None
     results = []
 
     try:
-        conn=psycopg2.connect("dbname='adventuregrid_data'")
+        postgres_password = os.getenv('POSTGRES_PASSWORD')
+        postgres_dbname = os.getenv('POSTGRES_DBNAME')
+        postgres_host = os.getenv('POSTGRES_HOST')
+        postgres_port = os.getenv('POSTGRES_PORT')
+        postgres_sslmode = os.getenv('POSTGRES_SSLMODE')
+        postgres_user = os.getenv('POSTGRES_USER')
+        conn=psycopg2.connect(
+            dbname=postgres_dbname, 
+            user=postgres_user, 
+            password=postgres_password, 
+            host=postgres_host,
+            port=postgres_port,
+            sslmode=postgres_sslmode
+        )
         cur = conn.cursor(cursor_factory=ext.DictCursor)
         cur.execute(sql, values)
         conn.commit()
