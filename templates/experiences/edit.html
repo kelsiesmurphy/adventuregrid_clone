@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Edit {{experience.title}}</h2>
+    <form class="create-form" action="/experiences/{{experience.id}}" method='post'>
+        <div class="title input-wrapper">
+            <label for="title">Title</label>
+            <input placeholder="Enter a title" value="{{experience.title}}" type="text" id="title" name="title">
+        </div>
+        <hr>
+        <div class="description input-wrapper">
+            <label for="description">Description</label>
+            <textarea placeholder="Enter a description" name="description" id="description" cols="30" rows="5">{{experience.description}}</textarea>
+        </div>
+        <hr>
+        <div class="location input-wrapper">
+            <label for="location">Location</label>
+            <input placeholder="Enter a location" type="text" id="location" value="{{experience.location}}" name="location">
+        </div>
+        <hr>
+        <div class="image input-wrapper">
+            <label for="image">Image</label>
+            <input placeholder="Enter an image URL" type="text" id="image" value="{{experience.image}}" name="image">
+        </div>
+        <hr>
+        <div class="price input-wrapper">
+            <label for="price">Price</label>
+            <input placeholder="Enter a price" type="number" id="price" value="{{experience.price}}" name="price" step="any">
+        </div>
+        <hr>
+        <div class="is_featured input-wrapper">
+            <label for="is_featured">Featured?</label>
+            <input type="checkbox" value=False id="is_featured" name="is_featured">
+        </div>
+        <hr>
+        <div class="buttons-container">
+            <a href="/experiences" class="header-button-link">Cancel</a>
+            <button class="header-button-link primary-button">Save</button>
+        </div>
+    </form>
+{% endblock content %}

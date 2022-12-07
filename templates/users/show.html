@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% set active_page = "users" %}
+
+{% block content %}
+<header class="section-header">
+    <h2>{{user.name}}</h2>
+</header>
+    <section class="card-grid">
+        <div class="individual-section">
+            <img id="profile-image" src="{{user.image}}" alt="">
+            <h3>{{user.name}}</h3>
+            <hr>
+            <p>{{experiences|length}} {% if experiences|length == 1 %}Experience{% else %}Experiences{% endif %}</p>
+            <ul>
+                {% for experience in experiences %}
+                    <a class="experiences-list" href="/experiences/{{experience.id}}">
+                        <li>
+                            <img src="{{experience.image}}" alt="experience.title">
+                            {{experience.title}}
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+            <div class="buttons-container">
+                <a href="/users/{{user.id}}/edit" class="header-button-link primary-button">Edit</a>
+                <form action="/users/{{user.id}}/delete" method="post">
+                    <button class="header-button-link delete-button">Delete</a>
+                </form>
+            </div>
+        </div>  
+    </section>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% set active_page = "reviews" %}
+
+{% block content %}
+<header class="section-header">
+    <h2>All Reviews</h2>
+</header>
+    <section class="reviews">
+        {% for review in users_experiences %}
+                <div class="review-section">
+                    <img src="{{review.user.image}}" alt="">
+                    <div>
+                        <h3>"{{review.review}}"</h3>
+                        <p>{{review.user.name}}</p>
+                        <p><i>{{review.experience.title}}</i></p>
+                    </div>
+                </div>
+                <hr>
+        {% endfor %}
+    </section>
+{% endblock content %}

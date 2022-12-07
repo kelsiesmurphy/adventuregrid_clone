@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% set active_page = "experiences" %}
+
+{% block content %}
+<header class="section-header">
+    <h2>All Experiences</h2>
+    <a href="/experiences/new" class="header-button-link primary-button">New Experience</a>
+</header>
+    <section class="experience-grid">
+        {% for experience in experiences %}
+            <a href="/experiences/{{experience.id}}">
+                <div class="experience-card" style="background-image: linear-gradient(0deg, rgba(104, 104, 104, 0.2), rgba(104, 104, 104, 0.2)),url('{{experience.image}}'); background-size: cover;">
+                    <div class="experience-card-blur">
+                        <h3>{{experience.title}}</h3>
+                        <div class="hover-show">
+                            <p style="color: white; font-size:14px;">{{experience.description}}</p>
+                        </div>
+                        <h4>{{experience.location}}</h4>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </section>
+{% endblock content %}

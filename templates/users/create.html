@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Create User</h2>
+    <form class="create-form" action="/users" method='post'>
+        <div class="name input-wrapper">
+            <label for="name">Name</label>
+            <input placeholder="Enter a name" type="text" id="name" name="name">
+        </div>
+        <hr>
+        <div class="username input-wrapper">
+            <label for="username">Username</label>
+            <input placeholder="Enter a username" type="text" id="username" name="username">
+        </div>
+        <hr>
+        <div class="email input-wrapper">
+            <label for="email">Email Address</label>
+            <input placeholder="Enter an email address" type="text" id="email" name="email">
+        </div>
+        <hr>
+        <div class="image input-wrapper">
+            <label for="image">Profile Image</label>
+            <input placeholder="Enter an image URL" type="text" id="image" name="image">
+        </div>
+        <hr>
+        <div class="buttons-container">
+            <a href="/users" class="header-button-link">Cancel</a>
+            <button class="header-button-link primary-button">Save</button>
+        </div>
+    </form>
+{% endblock content %}

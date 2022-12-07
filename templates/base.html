@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/images/adventuregrid_logo.svg" type="image/svg+xml">
+    <title>Dashboard | AdventureGrid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="sidebar">
+            <header>
+                <img src="/static/images/adventuregrid_logo.svg" width="50" alt="AdventureGrid Logo">
+            </header>
+            <main>
+            <!-- Followed this documentation for active menu items: https://jinja.palletsprojects.com/en/3.0.x/tricks/#highlighting-active-menu-items -->
+            {% set navigation_bar = [
+                ('/dashboard', 'home', 'Home'),
+                ('/experiences', 'experiences', 'Experiences'),
+                ('/users', 'users', 'Users'),
+                ('/reviews', 'reviews', 'Reviews')
+            ] -%}
+            {% set active_page = active_page|default('home') -%}
+                <nav class="sidebar-nav">
+                    <ul>
+                        {% for href, id, caption in navigation_bar %}
+                            <a href="{{ href|e }}">
+                                <li {% if id == active_page %} class="active"{% endif %}>
+                                    <img src="/static/images/icons/{{ id|e }}.svg" width="24" alt="{{id}} icon">{{ caption|e }}
+                                </li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </main>
+            <footer class="sidebar-footer">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <a href="/">
+                            <li>
+                                <img src="/static/images/icons/log-out.svg" width="24" alt="Log Out icon"><span>Log out</span>
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
+            </footer>
+        </div>
+        <div class="main-wrapper">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </main>
+</body>
+</html>

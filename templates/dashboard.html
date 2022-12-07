@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <header class="section-header">
+        <h2>Top Experiences</h2>
+        <a href="/experiences" class="header-button-link">See all</a>
+    </header>
+    <section class="experience-grid">
+        {% for experience in experiences[:3] %}
+            <a href="/experiences/{{experience.id}}">
+                <div class="experience-card" style="background-image: linear-gradient(0deg, rgba(104, 104, 104, 0.2), rgba(104, 104, 104, 0.2)),url('{{experience.image}}'); background-size: cover;">
+                    <div class="experience-card-blur">
+                        <h3>{{experience.title}}</h3>
+                        <div class="hover-show">
+                            <p style="color: white; font-size:14px;">{{experience.description}}</p>
+                        </div>
+                        <h4>{{experience.location}}</h4>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </section>
+    <div class="spacer"></div>
+    <header class="section-header">
+        <h2>Top Users</h2>
+        <a href="/users" class="header-button-link">See all</a>
+    </header>
+    <section class="card-grid">
+        {% for user in users[:4] %}
+            <a href="/users/{{user.id}}">
+                <div class="user-card">
+                    <img src="{{user.image}}" alt="">
+                    <h3>{{user.name}}</h3>
+                </div>
+            </a>
+        {% endfor %}
+    </section>
+{% endblock content %}

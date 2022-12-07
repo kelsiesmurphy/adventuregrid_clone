@@ -1,0 +1,200 @@
+body {
+    min-width: 320px;
+}
+
+.hero {
+    height: 100vh;
+    background: #2A4440 url('/static/images/index_images/topo-light.png') repeat;
+}
+
+.section-padding {
+    padding: 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1270px;
+}
+
+.hero>main {
+    padding: 60px 16px 120px 16px;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    height: 768px;
+    justify-content: center;
+    gap: 64px;
+}
+
+.featured-image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0px 64px;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 560px;
+    min-width: 280px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 12px;
+    padding: 16px 0;
+    justify-content: left;
+}
+
+.buttons-container>a {
+    align-items: center;
+}
+
+.header-button-link {
+    background-color: white;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #344054;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    min-width: 90px;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+}
+
+.header-button-link:hover {
+    background-color: #F9FAFB;
+}
+
+.primary-button {
+    background-color: #1D2522;
+    border: none;
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #121816;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bottom-padding {
+    padding: 80px 0;
+}
+
+.index-review-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+}
+
+.index-review-section>div {
+    gap: 16px;
+}
+
+.index-review-section>div>img {
+    width: 64px;
+    border-radius: 100%;
+    margin: auto;
+    margin-bottom: 16px;
+}
+
+.index-review-section>h3 {
+    font-size: 32px;
+}
+
+.hero>main>div>h1 {
+    font-size: 60px;
+    font-weight: 600;
+    color: white;
+}
+
+.hero>main>div>p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #DFDFDF;
+    line-height: 30px;
+}
+
+.reviews {
+    background-color: #F9FAFB;
+}
+
+#icon-button {
+    display: flex;
+    gap: 8px;
+}
+
+footer {
+    background-color: #F9FAFB;
+}
+
+.footer {
+    padding: 32px 0;
+    align-items: center;
+}
+
+.cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-inline: 16px;
+}
+
+.cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.newsletter>form {
+    display: flex;
+    gap: 8px;
+}
+
+.newsletter>p {
+    font-size: 14px;
+}
+
+.footer-section {
+    display: flex;
+    max-width: 400px;
+    min-width: 280px;
+    justify-content: center;
+}
+
+.footer-section>p {
+    font-size: 14px;
+    color: #98A2B3;
+}
+
+.socials {
+    display: flex;
+    gap: 32px;
+}
+
+.footer {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+@media only screen and (min-width: 568px) {
+    .footer {
+        justify-content: space-between;
+    }
+}

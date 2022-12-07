@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/images/adventuregrid_logo.svg" type="image/svg+xml">
+    <title>Seek Adventure | AdventureGrid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="hero">
+        <header class="section-padding">
+            <img src="/static/images/index_images/logo.svg" alt="AdventureGrid Logo" class="logo">
+            <div class="buttons-container">
+                <a href="/dashboard" class="header-button-link primary-button">Dashboard</a>
+            </div>
+        </header>
+        <main class="section-padding">
+            <div class="hero-text">
+                <h1>Seek Adventure</h1>
+                <p>Uncover your sense of adventure and discover something new, with our directory of unique experiences around Scotland, UK.</p>
+                <div class="buttons-container">
+                    <a id="icon-button" href="/dashboard" class="header-button-link"><img src="/static/images/icons/play-circle.svg" width="16px">Demo</a>
+                    <a href="/dashboard" class="header-button-link primary-button">Latest Adventures</a>
+                </div>
+            </div>
+            <img class="featured-image" src="{{featured_experience.image}}" alt="Hero Image">
+        </main>
+    </section>
+    <main class="section-padding main-content">
+        <section class="reviews">
+            <div class="index-review-section top-bottom-padding">
+                <h3>"{{review.review}}"</h3>
+                <div>
+                    <img src="{{review.user.image}}" alt="reviewer profile image">
+                    <p>{{review.user.name}}</p>
+                    <p><i>{{review.experience.title}}</i></p>
+                </div>
+            </div>
+        </section>
+        <section class="experience-grid experiences top-bottom-padding">
+            {% for experience in experiences %}
+                <a href="/experiences/{{experience.id}}">
+                    <div class="experience-card" style="background-image: linear-gradient(0deg, rgba(104, 104, 104, 0.2), rgba(104, 104, 104, 0.2)),url('{{experience.image}}'); background-size: cover;">
+                        <div class="experience-card-blur">
+                            <h3>{{experience.title}}</h3>
+                            <div class="hover-show">
+                                <p style="color: white; font-size:14px;">{{experience.description}}</p>
+                            </div>
+                            <h4>{{experience.location}}</h4>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </section>
+        <section class="card-grid top-bottom-padding">
+            {% for user in users %}
+                <a href="/users/{{user.id}}">
+                    <div class="user-card">
+                        <img src="{{user.image}}" alt="">
+                        <h3>{{user.name}}</h3>
+                    </div>
+                </a>
+            {% endfor %}
+        </section>
+    </main>
+    <footer>
+        <section class="cta section-padding top-bottom-padding">
+            <div class="cta-text">
+                <h1>Join us on our journey!</h1>
+                <p>Be the first to know about new adventures as we expand our catalogue!</p>
+            </div>
+            <div class="newsletter">
+                <form action="">
+                    <input type="text" placeholder="Enter your email">
+                    <button class="header-button-link primary-button">Submit</button>
+                </form>
+                <p>We care about your data in our privacy policy</p>
+            </div>
+        </section>
+        <section class="footer section-padding">
+            <div class="footer-section socials">
+                <a href="https://twitter.com/kelsiesmurphy"><img src="/static/images/icons/twitter.svg" alt="Twitter Icon"></a>
+                <a href="https://www.linkedin.com/in/kelsiesmurphy/"><img src="/static/images/icons/linkedin.svg" alt="LinkedIn Icon"></a>
+                <a href="https://github.com/kelsiesmurphy"><img src="/static/images/icons/github.svg" alt="Github Icon"></a>
+            </div>
+            <div class="footer-section"><img src="/static/images/adventuregrid_logo.svg" alt="AdventureGrid Logo"></div>
+            <div class="footer-section">
+                <p>© 2022 AdventureGrid. All rights reserved.</p>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
